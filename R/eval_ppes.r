@@ -113,6 +113,14 @@ saveRDS(PPE_st3,  'data/PPEs_agg.RDS')
 ggplot(data=PPE_st3[PPE_st3$taxon!='Cedar',]) + geom_point(aes(x=ppe, y=reorder(taxon,ppe)))
 ggsave('figures/ppes_averaged.pdf')
 
+
+taxa.NEUS <- c('Ash','Beech','Birch','Chestnut','Hemlock','Maple','Oak','Fir','Alder','Spruce','Larch','Hickory','Pine')
+
+ggplot(data=PPE_st3[PPE_st3$taxon%in%taxa.NEUS,]) + geom_point(aes(x=ppe, y=reorder(taxon,ppe)))
+ggsave('figures/ppes_averaged_NEUS.pdf')
+
+
+
 # 
 # PPEs_agg = aggregate(ppe_scaled ~ taxon, PPEs_sub, median)
 # PPEs_agg$error = aggregate(error_scaled ~ taxon, PPEs_sub, median, na.rm=TRUE)$error_scaled
